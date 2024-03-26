@@ -69,7 +69,7 @@ if (isset($_POST['submit'])) {
                     <!-- Email input -->
                     <div data-mdb-input-init class="form-outline">
                         <label class="form-label" for="form9Example2"><b>Mobile No*:</b></label>
-                        <input type="text" value="" name="mobile-no" data-inputmask="'mask': '0399-99999999'" required="" maxlength = "12" class="form-control" />
+                        <input type="text" value="" name="mobile-no" data-inputmask="'mask': '0399-99999999'" placeholder="0399-99999999" required="" maxlength = "12" class="form-control" />
                     </div>
                 </div>
             </div>
@@ -91,7 +91,7 @@ if (isset($_POST['submit'])) {
                     <!-- Email input -->
                     <div data-mdb-input-init class="form-outline mb-3">
                         <label class="form-label" for="form9Example2"><b>Email*:</b></label>
-                        <input type="email" name="email" placeholder="Enter Your Email" class="form-control" />
+                        <input type="email" name="email" placeholder="abc@gmail.com" class="form-control" />
                     </div>
                 </div>
             </div>
@@ -149,12 +149,12 @@ if (isset($_POST['submit'])) {
                             <td><?php echo $gender ?></td>
                             <td><?php echo $email ?></td>
                             <td></td>
-                            <td class="d-flex"><a href="edit.php?id=<?= $id ?>" class="btn btn-warning btn-md me-3">Edit</a>
+                            <td class="d-flex"><a href="edit.php?id=<?= $id ?>" class="btn btn-success btn-md me-3">Edit</a>
                             
                                 <a href="delete.php?id=<?= $id ?>" class="btn btn-danger btn-md me-3">Delete</a>
 
                                 <div class="dropdown">
-                                    <button class="btn btn-sm btn-secondary dropdown-toggle " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">                                        
+                                    <button class="btn btn-sm btn-warning dropdown-toggle " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">                                        
                                     Status    
                                 </button>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">

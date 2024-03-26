@@ -9,7 +9,7 @@ include("Configure.php");
     if(mysqli_num_rows( $result ) > 0) {
         $result = mysqli_fetch_assoc($result);
         $sql = "SELECT * FROM students_records";
-        echo "<pre>"; print_r($result); echo "</pre>";
+        // echo "<pre>"; print_r($result); echo "</pre>";
     }
 
 ?>
@@ -60,7 +60,7 @@ include("Configure.php");
                     <!-- Email input -->
                     <div data-mdb-input-init class="form-outline">
                         <label class="form-label" for="form9Example2"><b>Mobile No*:</b></label>
-                        <input type="text" name="mobile-no" value="<?=$result['student_mobile']?>" data-inputmask="'mask': '0399-99999999'" required="" maxlength = "12" class="form-control" />
+                        <input type="text" name="mobile-no" value="<?=$result['student_mobile']?>" data-inputmask="'mask': '0399-99999999'" placeholder="0399-99999999" required="" maxlength = "12" class="form-control" />
                     </div>
                 </div>
             </div>
@@ -82,7 +82,7 @@ include("Configure.php");
                     <!-- Email input -->
                     <div data-mdb-input-init class="form-outline mb-3">
                         <label class="form-label" for="form9Example2"><b>Email*:</b></label>
-                        <input type="email" name="email" value="<?=$result['student_email']?>" placeholder="Enter Your Email" class="form-control" />
+                        <input type="email" name="email" value="<?=$result['student_email']?>" placeholder="abc@gmail.com" class="form-control" />
                     </div>
                 </div>
             </div>
