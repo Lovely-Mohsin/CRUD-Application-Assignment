@@ -8,13 +8,13 @@ if (isset($_POST['submit'])) {
     $cnic = $_POST["cnic"];
     $mobileno = $_POST["mobile-no"];
     $gender = $_POST["gender"];
-    $status = $_POST["status"];
+    $email = $_POST["email"];
 
-    $sql = "INSERT INTO students_records (`student_name` , `student_father_name` , `student_cnic` , `student_mobile`, `student_gender` , `student_status`) VALUES ('$name' , '$fname' , '$cnic' , '$mobileno' , '$gender' , '$status')";
+    $sql = "INSERT INTO students_records (`student_name` , `student_father_name` , `student_cnic` , `student_mobile`, `student_gender` , `student_email`) VALUES ('$name' , '$fname' , '$cnic' , '$mobileno' , '$gender' , '$email')";
     $result = mysqli_query($db_conn, $sql);
 
     if ($result) {
-        echo 'Data Inserted Successfully';
+        // echo 'Data Inserted Successfully';
     }
 }
 
@@ -29,6 +29,7 @@ if (isset($_POST['submit'])) {
     <title>Students-Records</title>
     <link rel="stylesheet" href="./Bootstrap/css/bootstrap.min.css">
     <script src="./Bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="./Bootstrap/js/style.js"></script>
     <link rel="stylesheet" href="./Bootstrap/css/new.css">
 </head>
 
@@ -61,14 +62,14 @@ if (isset($_POST['submit'])) {
                     <div data-mdb-input-init class="form-outline mb-2">
 
                         <label class="form-label" for="form9Example1"><b>CNIC*:</b></label>
-                        <input type="integer" name="cnic" placeholder="Enter Your CNIC" class="form-control" />
+                        <input type="text" name="cnic" data-inputmask="'mask': '99999-9999999-9'" required="" placeholder="XXXXX-XXXXXXX-X" class="form-control" />
                     </div>
                 </div>
                 <div class="col">
                     <!-- Email input -->
                     <div data-mdb-input-init class="form-outline">
                         <label class="form-label" for="form9Example2"><b>Mobile No*:</b></label>
-                        <input type="integer" value="" name="mobile-no" placeholder="Enter Your Mobile No" class="form-control" />
+                        <input type="text" value="" name="mobile-no" data-inputmask="'mask': '0399-99999999'" required="" maxlength = "12" class="form-control" />
                     </div>
                 </div>
             </div>
@@ -80,7 +81,7 @@ if (isset($_POST['submit'])) {
 
                         <label class="form-label" for="form9Example1"><b>Gender*:</b></label>
                         <select name="gender" class="w-100 form-control">
-                            <option value="male" selected disabled>Choose Your Gender</option>
+                            <option selected disabled>Choose Your Gender</option>
                             <option value="male">Male</option>
                             <option value="female">Female</option>
                         </select>
@@ -89,8 +90,8 @@ if (isset($_POST['submit'])) {
                 <div class="col">
                     <!-- Email input -->
                     <div data-mdb-input-init class="form-outline mb-3">
-                        <label class="form-label" for="form9Example2"><b>Status*:</b></label>
-                        <input type="integer" name="status" placeholder="Enter Your Status" class="form-control" />
+                        <label class="form-label" for="form9Example2"><b>Email*:</b></label>
+                        <input type="email" name="email" placeholder="Enter Your Email" class="form-control" />
                     </div>
                 </div>
             </div>
@@ -114,6 +115,7 @@ if (isset($_POST['submit'])) {
                     <th scope="col">CNIC</th>
                     <th scope="col">Mobile No</th>
                     <th scope="col">Gender</th>
+                    <th scope="col">Email</th>
                     <th scope="col">Status</th>
                     <th scope="col">Actions</th>
                 </tr>
@@ -133,7 +135,7 @@ if (isset($_POST['submit'])) {
                         $cnic = $row['student_cnic'];
                         $mobileno = $row['student_mobile'];
                         $gender = $row['student_gender'];
-                        $status = $row['student_status'];
+                        $email = $row['student_email'];
 
 
                 ?>
@@ -145,7 +147,8 @@ if (isset($_POST['submit'])) {
                             <td><?php echo $cnic ?></td>
                             <td><?php echo $mobileno ?></td>
                             <td><?php echo $gender ?></td>
-                            <td><?php echo $status ?></td>
+                            <td><?php echo $email ?></td>
+                            <td></td>
                             <td class="d-flex"><a href="edit.php?id=<?= $id ?>" class="btn btn-warning btn-md me-3">Edit</a>
                             
                                 <a href="delete.php?id=<?= $id ?>" class="btn btn-danger btn-md me-3">Delete</a>
