@@ -29,8 +29,8 @@ if (isset($_POST['submit'])) {
     <title>Students-Records</title>
     <link rel="stylesheet" href="./Bootstrap/css/bootstrap.min.css">
     <script src="./Bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="./Bootstrap/js/style.js"></script>
     <link rel="stylesheet" href="./Bootstrap/css/new.css">
+
 </head>
 
 <body>
@@ -69,7 +69,7 @@ if (isset($_POST['submit'])) {
                     <!-- Email input -->
                     <div data-mdb-input-init class="form-outline">
                         <label class="form-label" for="form9Example2"><b>Mobile No*:</b></label>
-                        <input type="text" value="" name="mobile-no" data-inputmask="'mask': '0399-99999999'" placeholder="0399-99999999" required="" maxlength = "12" class="form-control" />
+                        <input type="text" value="" name="mobile-no" data-inputmask="'mask': '9999-99999999'" placeholder="XXXX-XXXXXXX" required="" maxlength="12" class="form-control" />
                     </div>
                 </div>
             </div>
@@ -150,13 +150,13 @@ if (isset($_POST['submit'])) {
                             <td><?php echo $email ?></td>
                             <td></td>
                             <td class="d-flex"><a href="edit.php?id=<?= $id ?>" class="btn btn-success btn-md me-3">Edit</a>
-                            
+
                                 <a href="delete.php?id=<?= $id ?>" class="btn btn-danger btn-md me-3">Delete</a>
 
                                 <div class="dropdown">
-                                    <button class="btn btn-sm btn-warning dropdown-toggle " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">                                        
-                                    Status    
-                                </button>
+                                    <button class="btn btn-sm btn-warning dropdown-toggle " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Status
+                                    </button>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                         <li><a class="dropdown-item" href="#">Active</a></li>
                                         <li><a class="dropdown-item" href="#">Inactive</a></li>
@@ -174,3 +174,8 @@ if (isset($_POST['submit'])) {
 </body>
 
 </html>
+<script src="./Masking/jquery.min.js"></script>
+<script src="./Masking/jquery.inputmask.bundle.js"></script>
+<script>
+    $(":input").inputmask();
+</script>
