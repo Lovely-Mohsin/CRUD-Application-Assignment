@@ -27,7 +27,7 @@ include("Configure.php");
     <!-- Gutter g-1 -->
     <div class="container mt-3 shadow">
         <h2 class="bg-success text-center text-white p-2">Edit Student Record</h2>
-        <form action="./students_records.php" method="POST">
+        <form action="./update.php" method="POST">
         <input type="hidden" name="id" value="<?=$result['student_id']?>">
             <div class="row g-1 p-2">
                 <div class="col">

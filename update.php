@@ -16,11 +16,12 @@ if ($_POST['submit']) {
     $mobileno = $_POST['mobile-no'];
     $gender = $_POST['gender'];
     $email = $_POST['email'];
+    $status =1;
 
-    $sql = "UPDATE students_records SET Name='$name', Email = '$email', City = '$city', Age = '$age', gender = '$gender' WHERE students_id = $id";
+    $sql = "UPDATE students_records SET student_name='$name', student_father_name = '$fname', student_cnic = '$cnic', student_mobile = '$mobileno', student_gender = '$gender' , student_email = '$email' , student_status = '$status' WHERE student_id = $id";
 
     if(mysqli_query($db_conn,$sql)){
-        
+        header("Location:students_records.php");
 
     }
 }

@@ -9,8 +9,9 @@ if (isset($_POST['submit'])) {
     $mobileno = $_POST["mobile-no"];
     $gender = $_POST["gender"];
     $email = $_POST["email"];
+    $status = 1;
 
-    $sql = "INSERT INTO students_records (`student_name` , `student_father_name` , `student_cnic` , `student_mobile`, `student_gender` , `student_email`) VALUES ('$name' , '$fname' , '$cnic' , '$mobileno' , '$gender' , '$email')";
+    $sql = "INSERT INTO students_records (`student_name` , `student_father_name` , `student_cnic` , `student_mobile`, `student_gender` , `student_email` , `student_status`) VALUES ('$name' , '$fname' , '$cnic' , '$mobileno' , '$gender' , '$email' , '$status')";
     $result = mysqli_query($db_conn, $sql);
 
     if ($result) {
@@ -34,6 +35,49 @@ if (isset($_POST['submit'])) {
 </head>
 
 <body>
+    <!-- navbar -->
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Dropdown
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Navbar Code End -->
+
     <!-- Gutter g-1 -->
     <div class="container mt-3 shadow">
         <h2 class="bg-success text-center text-white p-2">Add Student</h2>
@@ -54,9 +98,6 @@ if (isset($_POST['submit'])) {
                         <input type="text" name="father-name" placeholder="Enter Your Father Name" class="form-control" />
                     </div>
                 </div>
-            </div>
-
-            <div class="row g-1 p-2">
                 <div class="col">
                     <!-- Name input -->
                     <div data-mdb-input-init class="form-outline mb-2">
@@ -65,6 +106,10 @@ if (isset($_POST['submit'])) {
                         <input type="text" name="cnic" data-inputmask="'mask': '99999-9999999-9'" required="" placeholder="XXXXX-XXXXXXX-X" class="form-control" />
                     </div>
                 </div>
+            </div>
+
+            <div class="row g-1 p-2">
+
                 <div class="col">
                     <!-- Email input -->
                     <div data-mdb-input-init class="form-outline">
@@ -72,9 +117,6 @@ if (isset($_POST['submit'])) {
                         <input type="text" value="" name="mobile-no" data-inputmask="'mask': '9999-99999999'" placeholder="XXXX-XXXXXXX" required="" maxlength="12" class="form-control" />
                     </div>
                 </div>
-            </div>
-
-            <div class="row g-1 p-2">
                 <div class="col">
                     <!-- Name input -->
                     <div data-mdb-input-init class="form-outline mb-2">
@@ -94,6 +136,10 @@ if (isset($_POST['submit'])) {
                         <input type="email" name="email" placeholder="abc@gmail.com" class="form-control" />
                     </div>
                 </div>
+            </div>
+
+            <div class="row g-1 p-2">
+
             </div>
             <div class="">
                 <input type="submit" class="btn btn-success w-100 mb-3" name="submit" value="Add Record">
@@ -136,6 +182,7 @@ if (isset($_POST['submit'])) {
                         $mobileno = $row['student_mobile'];
                         $gender = $row['student_gender'];
                         $email = $row['student_email'];
+                        $status = $row['student_status'];
 
 
                 ?>
@@ -148,19 +195,17 @@ if (isset($_POST['submit'])) {
                             <td><?php echo $mobileno ?></td>
                             <td><?php echo $gender ?></td>
                             <td><?php echo $email ?></td>
-                            <td></td>
-                            <td class="d-flex"><a href="edit.php?id=<?= $id ?>" class="btn btn-success btn-md me-3">Edit</a>
-
-                                <a href="delete.php?id=<?= $id ?>" class="btn btn-danger btn-md me-3">Delete</a>
-
+                            <td><?php echo '<span class="badge bg-success">Success</span>' ?></td>
+                            <td>
                                 <div class="dropdown">
-                                    <button class="btn btn-sm btn-warning dropdown-toggle " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Status
-                                    </button>
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <a class="btn btn-danger dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                        -- Actions --
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                        <li><a class="dropdown-item" href="edit.php?id=<?= $id ?>">Edit</a></li>
                                         <li><a class="dropdown-item" href="#">Active</a></li>
                                         <li><a class="dropdown-item" href="#">Inactive</a></li>
-                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                        <li><a class="dropdown-item" href="delete.php?id=<?= $id ?>">Removed</a></li>
                                     </ul>
                                 </div>
                             </td>
