@@ -39,9 +39,6 @@ if (isset($_POST['submit'])) {
 
 ?>
 
-
-
-
 <html lang="en">
 
 <head>
