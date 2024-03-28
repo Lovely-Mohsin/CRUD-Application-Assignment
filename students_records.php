@@ -163,7 +163,7 @@ if (isset($_POST['submit'])) {
 
         <h2 class="text-center text-dark p-2 mb-3">Registered Students</h2>
         <table class="table table-bordered">
-            <thead>
+            <thead class="bg-info">
                 <tr>
                     <th scope="col">Sr#</th>
                     <th scope="col">Name</th>
@@ -180,7 +180,7 @@ if (isset($_POST['submit'])) {
 
                 <?Php
                 include("Configure.php");
-                $sql = "SELECT * FROM students_records WHERE student_status != -1";
+                $sql = "SELECT * FROM students_records";
                 $result = mysqli_query($db_conn, $sql);
 
                 if (mysqli_num_rows($result) > 0) {
@@ -210,9 +210,12 @@ if (isset($_POST['submit'])) {
                                 echo '<span class="badge bg-success">Active</span>';
 
                             }
-                            else{
+                            else if($status == 0){
                                 echo '<span class="badge bg-warning">Inactive</span>';
  
+                            }
+                            else{
+                                echo '<span class="badge bg-secondary">Removed</span>';
                             }
                             ?>
                             </td>
